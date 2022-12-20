@@ -4,7 +4,7 @@ var constraints = { video: { facingMode: "user" }, audio: false };
 const cameraView = document.querySelector("#camera--view"),
     cameraOutput = document.querySelector("#camera--output"),
     cameraSensor = document.querySelector("#camera--sensor"),
-    cameraTrigger = document.querySelector("#camera--trigger")
+    cameraTrigger = document.querySelector("#camera--trigger");
 // Access the device camera and stream to cameraView
 function cameraStart() {
     navigator.mediaDevices
@@ -24,6 +24,8 @@ cameraTrigger.onclick = function() {
     cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
     cameraOutput.src = cameraSensor.toDataURL("image/webp");
     cameraOutput.classList.add("taken");
+
+    console.log("Picture taken");
 };
 // Start the video stream when the window loads
 window.addEventListener("load", cameraStart, false);
